@@ -3,7 +3,9 @@ import json
 import helpers
 import requests
 from models import Setting
+from dbcache import dbcache
 
+@dbcache
 def shodan(indicator):
     try:
         settings = Setting.query.filter_by(_id=1).first()

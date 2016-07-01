@@ -1,5 +1,5 @@
 from models import Setting
-
+from dbcache import dbcache
 
 def _generate_request_instance(request_type):
     """Automatically generate a request instance to use.
@@ -26,8 +26,8 @@ def _generate_request_instance(request_type):
     authenticated = loaded(pt_username, pt_api_key, headers=headers)
     return authenticated
 
-
-def pt_lookup(query_type, indicator):
+@dbcache
+def pt_lookup(query_type, indicator):                                   
     try:
         client = _generate_request_instance(query_type)
     except Exception as e:

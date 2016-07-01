@@ -2,11 +2,11 @@ import json
 
 import whois
 from ipwhois import IPWhois
-
+from dbcache import dbcache
 
 # IPv4 Whois
 
-
+@dbcache
 def ipwhois(entity):
     obj = IPWhois(entity)
     whoisdata = obj.lookup()
@@ -14,7 +14,7 @@ def ipwhois(entity):
 
 # Domain Whois
 
-
+@dbcache
 def domainwhois(entity):
     domain = json.loads(str(whois.whois(entity)))
     for k, v in domain.iteritems():

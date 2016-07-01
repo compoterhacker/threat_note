@@ -1,7 +1,8 @@
 import requests
 from models import Setting
+from dbcache import dbcache
 
-
+@dbcache
 def report_data(cuckoo_task_id):
     settings = Setting.query.filter_by(_id=1).first()
     host = settings.cuckoohost
@@ -27,6 +28,7 @@ def report_data(cuckoo_task_id):
         return None, None, None, None
 
 
+@dbcache
 def get_tasks():
     try:
         settings = Setting.query.filter_by(_id=1).first()

@@ -4,7 +4,9 @@ import json
 import helpers
 import requests
 from models import Setting
+from dbcache import dbcache
 
+@dbcache
 def farsightip(indicator):
     settings = Setting.query.filter_by(_id=1).first()
     apikey = settings.farsightkey
@@ -23,7 +25,7 @@ def farsightip(indicator):
             pass
     return to_return
 
-
+@dbcache
 def farsightdomain(indicator):
     settings = Setting.query.filter_by(_id=1).first()
     apikey = settings.farsightkey

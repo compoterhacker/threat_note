@@ -3,8 +3,10 @@ import json
 import helpers
 import requests
 from models import Setting
+from dbcache import dbcache
 
 # IPv4 VirusTotal function for passive DNS
+@dbcache
 def vt_ipv4_lookup(ipv4):
     try:
         settings = Setting.query.filter_by(_id=1).first()
@@ -20,6 +22,7 @@ def vt_ipv4_lookup(ipv4):
 
 
 # Domain VirusTotal function for passive DNS
+@dbcache
 def vt_domain_lookup(domain):
     try:
         settings = Setting.query.filter_by(_id=1).first()
@@ -36,7 +39,7 @@ def vt_domain_lookup(domain):
     except:
         pass
 
-
+@dbcache
 def vt_hash_lookup(filehash):
     try:
         settings = Setting.query.filter_by(_id=1).first()

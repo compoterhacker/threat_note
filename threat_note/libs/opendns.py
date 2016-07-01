@@ -1,6 +1,6 @@
 import investigate
 from models import Setting
-
+from dbcache import dbcache
 
 def get_odns_apikey():
     settings = Setting.query.filter_by(_id=1).first()
@@ -9,7 +9,7 @@ def get_odns_apikey():
         odnskey = None
     return odnskey
 
-
+@dbcache
 def domains_investigate(domain):
     inv = investigate.Investigate(get_odns_apikey())
     cat = inv.categorization(domain, labels=True)
@@ -31,7 +31,7 @@ def domains_investigate(domain):
     odns_data['Latest IP Address'] = rrh['rrs_tf'][0]['rrs'][0]['rr']
     return odns_data
 
-
+@dbcache
 def ip_investigate(ip):
     inv = investigate.Investigate(get_odns_apikey())
     rrh = inv.rr_history(ip)
