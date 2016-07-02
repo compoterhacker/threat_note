@@ -13,5 +13,9 @@ static/uploads/*
 
 *.db
 
+pip-selfcheck.json
 # Common VirtualEnv Path
 venv*
+bin*
+lib*
+include*

@@ -2,13 +2,9 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy import create_engine
-import os
-import sys
+import os, sys, datetime, json, pickle, logging
 from functools import wraps
-import datetime
-import json
-import pickle
-import logging
+from models import Setting
 
 db = create_engine('sqlite:///threatnoteapis.db')
 
@@ -59,6 +55,10 @@ def dbcache(fn, refresh_time=86400, force_update=False):
         cached_entry = session.query(DBCache).filter_by(
                            calling_function=fn.__name__,
                            hashed_args=hashed_args).order_by(DBCache.id.desc()).first()
+        settings = Setting.query.filter_by(_id=1).first()
+        refresh_time = settings.cache_ttl
+        if refresh_time == '':
+            refresh_time = 86400
         if cached_entry: # Check age and force_update if too old
             now = datetime.datetime.now()
             retrieved = cached_entry.retrieved_date

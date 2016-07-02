@@ -69,11 +69,12 @@ class Setting(Base):
     farsightkey = Column('farsightkey', String)
     shodaninfo = Column('shodaninfo', String)
     shodankey = Column('shodankey', String)
+    cache_ttl = Column('cache_ttl', Integer)
 
     def __init__(self, vtinfo, whoisinfo, odnsinfo, circlinfo, farsightinfo, shodaninfo, circlssl, threatcrowd, vtfile,
                  pt_pdns, pt_whois, pt_pssl, pt_host_attr, pt_username, pt_api_key,
                  apikey, odnskey, circlusername, circlpassword, farsightkey,
-                 cuckoo, cuckoohost, cuckooapiport, httpproxy, httpsproxy, shodankey):
+                 cuckoo, cuckoohost, cuckooapiport, httpproxy, httpsproxy, shodankey, cache_ttl):
         self.apikey = apikey
         self.odnskey = odnskey
         self.vtinfo = vtinfo
@@ -100,6 +101,7 @@ class Setting(Base):
         self.farsightkey = farsightkey
         self.shodaninfo = shodaninfo
         self.shodankey = shodankey
+        self.cache_ttl = cache_ttl
 
 
 class Indicator(Base):

@@ -22,7 +22,7 @@ def _generate_request_instance(request_type):
     mod = __import__('passivetotal.libs.%s' % request_type,
                      fromlist=[class_name])
     loaded = getattr(mod, class_name)
-    headers = {'PT-INTEGRATION': 'ThreatNote'}
+    headers = {'x-dongs': 'lol'}
     authenticated = loaded(pt_username, pt_api_key, headers=headers)
     return authenticated
 

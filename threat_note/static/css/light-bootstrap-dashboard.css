@@ -1006,6 +1006,8 @@ body > .navbar-collapse[data-color="purple"]:after {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
+  overflow-x: auto;
+  overflow-y: auto;
   padding: 12px 8px;
   vertical-align: middle;
 }
@@ -3336,7 +3338,7 @@ body > .navbar-collapse[data-color="purple"]:after {
   .table-responsive {
     width: 100%;
     margin-bottom: 15px;
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: hidden;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     -webkit-overflow-scrolling: touch;

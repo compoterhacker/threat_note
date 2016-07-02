@@ -106,7 +106,7 @@ def register():
             # Set up the settings table when the first user is registered.
             if not Setting.query.filter_by(_id=1).first():
                 settings = Setting('off', 'off', 'off', 'off', 'off', 'off', 'off', 'off', 'off', 'off', 'off', 'off', 'off', 'off', '', '', '',
-                                   '', '', '', '', '', '', '', '', '')
+                                   '', '', '', '', '', '', '', '', '', '')
                 db_session.add(settings)
             # Commit all database changes once they have been completed
             db_session.commit()
@@ -594,6 +594,7 @@ def updatesettings():
         settings.odnskey = newdict['odnskey']
         settings.httpproxy = newdict['httpproxy']
         settings.httpsproxy = newdict['httpsproxy']
+        settings.cache_ttl = newdict['cache_ttl']
         settings.cuckoohost = newdict['cuckoohost']
         settings.cuckooapiport = newdict['cuckooapiport']
         settings.circlusername = newdict['circlusername']

@@ -18,7 +18,7 @@ def domains_investigate(domain):
     sec = inv.security(domain)
     #tag = inv.domain_tags(domain)
     rrh = inv.rr_history(domain)
-
+    
     odns_data = dict()
     odns_data['ASN'] = ', '.join(['AS' + str(i) for i in rrh['features']['asns']])
     odns_data['Prefix'] = ', '.join(rrh['features']['prefixes'])

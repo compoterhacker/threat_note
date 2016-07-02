@@ -53,6 +53,26 @@
             </div>
             <div class="col-md-6">
                 <div class="card ">
+                    <form class="form-horizontal" action="/update/settings/" enctype="application/x-www-form-urlencoded" method="POST">
+                        <div class="header">
+                            <h4 class="title">Cache Settings</h4>
+                            <p class="category">3rd Party API Call Cache TTL</p>
+                        </div>
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <fieldset>
+                                        <label>TTL</label>
+                                        <input type="text" class="form-control" name="cache_ttl" value="{{ records['cache_ttl'] }}" placeholder="86400">
+                                        </br>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card ">
                     <div class="header">
                         <h4 class="title">3rd Party Integrations</h4>
                         <p class="category">Configure 3rd Party Data Providers Options</p>
